@@ -1,0 +1,111 @@
+{
+  "author": null,
+  "author_email": null,
+  "creator_user_id": "225c9875-7c42-4d5f-bf68-9c2be48883a2",
+  "extras": [
+    {
+      "key": "access_rights",
+      "value": "http://publications.europa.eu/resource/authority/access-right/PUBLIC"
+    },
+    {
+      "key": "contact_name",
+      "value": "yoda"
+    },
+    {
+      "key": "contact_uri",
+      "value": "https://yoda.dit.upm.es/"
+    },
+    {
+      "key": "publisher_type",
+      "value": "http://purl.org/adms/publishertype/Academia-ScientificOrganisation"
+    },
+    {
+      "key": "spatial_uri",
+      "value": "https://publications.europa.eu/resource/authority/country/ESP"
+    },
+    {
+      "key": "temporal_end",
+      "value": "2032-01-01T00:00:00Z"
+    },
+    {
+      "key": "temporal_start",
+      "value": "2022-01-01T00:00:00Z"
+    },
+    {
+      "key": "theme",
+      "value": "[\"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/data-theme\\/ENVI\"]"
+    }
+  ],
+  "groups": [],
+  "id": "15025f95-d8b7-440e-a971-6c94d686efb8",
+  "isopen": false,
+  "license_id": null,
+  "license_title": null,
+  "maintainer": null,
+  "maintainer_email": null,
+  "metadata_created": "2025-04-11T09:59:01.874871",
+  "metadata_modified": "2025-04-11T09:59:02.040768",
+  "name": "teruel_8368u",
+  "notes": "Climatología de la estación de TERUEL siguiendo el modelo WeatherObserved de NGSI-LD. Información elaborada utilizando, entre otras, la obtenida de la Agencia Estatal de Meteorología.",
+  "num_resources": 1,
+  "num_tags": 1,
+  "organization": {
+    "approval_status": "approved",
+    "created": "2025-04-11T09:55:02.827231",
+    "description": "",
+    "id": "4cf61359-aa57-4510-af90-0c9aeec9f808",
+    "image_url": "",
+    "is_organization": true,
+    "name": "meteorologia",
+    "state": "active",
+    "title": "meteorologia",
+    "type": "organization"
+  },
+  "owner_org": "4cf61359-aa57-4510-af90-0c9aeec9f808",
+  "private": false,
+  "relationships_as_object": [],
+  "relationships_as_subject": [],
+  "resources": [
+    {
+      "access_url": "https://broker-yoda.dit.upm.es/ngsi-ld/v1/entities/urn:ngsi-ld:WeatherObserved:8368U-1",
+      "availability": "http://data.europa.eu/r5r/availability/available",
+      "cache_last_updated": null,
+      "cache_url": null,
+      "created": "2025-04-11T09:59:02.049618",
+      "datastore_active": false,
+      "description": "Observación de climatología de TERUEL",
+      "download_url": "https://broker-yoda.dit.upm.es/ngsi-ld/v1/entities/urn:ngsi-ld:WeatherObserved:8368U-1",
+      "format": "JSON_LD",
+      "hash": "",
+      "id": "ad0ca139-933a-4bd5-b60c-577a9e115e9b",
+      "last_modified": null,
+      "license": "http://publications.europa.eu/resource/authority/licence/CC_BY_4_0",
+      "metadata_modified": "2025-04-11T09:59:02.044692",
+      "mimetype": "application/ld+json",
+      "mimetype_inner": null,
+      "name": "urn:ngsi-ld:WeatherObserved:8368U-1",
+      "package_id": "15025f95-d8b7-440e-a971-6c94d686efb8",
+      "position": 0,
+      "resource_type": null,
+      "rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+      "size": 1313,
+      "state": "active",
+      "url": "https://broker-yoda.dit.upm.es/ngsi-ld/v1/entities/urn:ngsi-ld:WeatherObserved:8368U-1",
+      "url_type": null
+    }
+  ],
+  "state": "active",
+  "tags": [
+    {
+      "display_name": "tiempo",
+      "id": "141bf6ee-edb8-45ce-a78e-ce06146d7b52",
+      "name": "tiempo",
+      "state": "active",
+      "vocabulary_id": null
+    }
+  ],
+  "title": "teruel_8368u",
+  "type": "dataset",
+  "url": "https://yoda.dit.upm.es/",
+  "version": "1.0"
+}
