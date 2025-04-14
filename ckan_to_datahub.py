@@ -1,4 +1,5 @@
 import json
+import requests
 from datetime import datetime
 from datahub.metadata.schema_classes import (
     DatasetSnapshotClass,
@@ -12,9 +13,23 @@ from datahub.metadata.schema_classes import (
 )
 from datahub.emitter.mce_builder import make_dataset_urn
 
-# Cargar JSON de CKAN (simula respuesta de API)
-with open("ckan_sample.json", encoding="utf-8") as f:
-    ckan_data = json.load(f)
+# # Cargar JSON de CKAN (simula respuesta de API)
+# with open("ckan_sample.json", encoding="utf-8") as f:
+#     ckan_data = json.load(f)
+
+# Hacer la llamada a la API de CKAN (equivalente a ckanapi action package_show ...)
+ckan_url = "http://localhost:8282/api/3/action/package_show"
+params = {"id": "teruel_8368u"}
+
+response = requests.get(ckan_url, params=params)
+
+# Verificar si la solicitud fue exitosa
+if response.status_code != 200:
+    raise Exception(f"Error en la petición a CKAN: {response.status_code} - {response.text}")
+
+# Obtener el contenido del dataset (está en 'result')
+ckan_data = response.json()["result"]
+
 
 # Buscar los valores en "extras"
 def get_extra_value(extras, key):
