@@ -1,7 +1,7 @@
 source:
   type: "file"
   config:
-    filename: "./ckan_mce_transformed.json"
+    filename: "./all_ckan_mces.json"
 
 sink:
   type: "datahub-rest"
