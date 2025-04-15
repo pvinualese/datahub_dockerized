@@ -2,4 +2,4 @@ all_ckan_mces.json
 ckan_mce_transformed.json
 ckan_sample.json
 precipitaciones.json
-*.jar
+docker/datahub-upgrade/datahub-upgrade.jar
