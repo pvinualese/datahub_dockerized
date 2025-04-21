@@ -23,6 +23,8 @@ def get_extra_value(extras, key):
 
 # Obtener todos los paquetes de la organización 'meteorologia'
 ckan_url = "http://localhost:8181/api/3/action/package_search"
+# ckan_url = "http://host.docker.internal:8181/api/3/action/package_search"
+
 params = {"q": "organization:meteorologia", "rows": 1000}
 response = requests.get(ckan_url, params=params, verify=False)
 
