@@ -21,8 +21,8 @@ def get_extra_value(extras, key):
     return None
 
 # Configura el emisor de DataHub REST
-# direccion localhost con el puerto del primer server gms. se pone la direccion ip en lugar de localhost porque se ejecuta dentro del contenedor
-emitter = DatahubRestEmitter(gms_server="http://138.4.7.113:8080", extra_headers={}) 
+# direccion localhost con el puerto del segundo server gms. se pone la direccion ip en lugar de localhost porque se ejecuta dentro del contenedor
+emitter = DatahubRestEmitter(gms_server="http://138.4.7.113:8082", extra_headers={}) 
 
 
 
@@ -30,8 +30,8 @@ emitter = DatahubRestEmitter(gms_server="http://138.4.7.113:8080", extra_headers
 emitter.test_connection()
 
 # Obtener todos los paquetes de la organización 'meteorologia'
-# direccion localhost de la instancia ckan que contiene precipitations. se pone la direccion ip en lugar de localhost porque se ejecuta dentro del contenedor
-ckan_url = "http://138.4.7.113:8181/api/3/action/package_search" 
+# direccion localhost de la instancia ckan que contiene clima. se pone la direccion ip en lugar de localhost porque se ejecuta dentro del contenedor
+ckan_url = "http://138.4.7.113:8282/api/3/action/package_search" 
 
 
 params = {"q": "organization:meteorologia", "rows": 1000}
