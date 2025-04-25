@@ -1,5 +1,5 @@
 networks:
-  ckan_yoda:
+  datahub_network:
     external: true
     name: datahub_network
 services:
@@ -51,9 +51,9 @@ services:
     image: ${DATAHUB_ACTIONS_IMAGE:-acryldata/datahub-actions}:${ACTIONS_VERSION:-head}
     volumes:
       - ../../scripts:/datahub/scripts
-    command: >
-      bash -c "pip install -U acryl-datahub[datahub-rest] && 
-               python3 /datahub/scripts/precipitations_to_datahub_container.py" 
+    # command: >
+    #   bash -c "pip install -U acryl-datahub[datahub-rest] && 
+    #            python3 /datahub/scripts/precipitations_to_datahub_container.py" 
     restart: on-failure
   datahub-frontend-react-prec:
     depends_on:

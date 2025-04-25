@@ -1,0 +1,542 @@
+[
+    {
+        "latitud": "402443N",
+        "provincia": "MADRID",
+        "altitud": "667",
+        "indicativo": "3195",
+        "nombre": "MADRID, RETIRO",
+        "indsinop": "08222",
+        "longitud": "034041W"
+    },
+    {
+      "latitud" : "404735N",
+      "provincia" : "MADRID",
+      "altitud" : "1894",
+      "indicativo" : "2462",
+      "nombre" : "PUERTO DE NAVACERRADA",
+      "indsinop" : "08215",
+      "longitud" : "040038W"
+    },
+    {
+      "latitud" : "400402N",
+      "provincia" : "MADRID",
+      "altitud" : "540",
+      "indicativo" : "3100B",
+      "nombre" : "ARANJUEZ",
+      "indsinop" : "08229",
+      "longitud" : "033246W"
+    },
+    {
+      "latitud" : "402800N",
+      "provincia" : "MADRID",
+      "altitud" : "609",
+      "indicativo" : "3129",
+      "nombre" : "MADRID AEROPUERTO",
+      "indsinop" : "08221",
+      "longitud" : "033320W"
+    },
+    {
+      "latitud" : "410808N",
+      "provincia" : "MADRID",
+      "altitud" : "1450",
+      "indicativo" : "3111D",
+      "nombre" : "SOMOSIERRA",
+      "indsinop" : "08145",
+      "longitud" : "033449W"
+    },
+    {
+        "latitud": "372500N",
+        "provincia": "SEVILLA",
+        "altitud": "34",
+        "indicativo": "5783",
+        "nombre": "SEVILLA AEROPUERTO",
+        "indsinop": "08391",
+        "longitud": "055245W"
+    },
+    {
+      "latitud" : "375535N",
+      "provincia" : "SEVILLA",
+      "altitud" : "550",
+      "indicativo" : "5704B",
+      "nombre" : "CAZALLA DE LA SIERRA",
+      "indsinop" : "08392",
+      "longitud" : "054611W"
+    }, {
+      "latitud" : "373058N",
+      "provincia" : "SEVILLA",
+      "altitud" : "130",
+      "indicativo" : "5641X",
+      "nombre" : "ÉCIJA",
+      "indsinop" : "08395",
+      "longitud" : "050506W"
+    },
+    {
+        "latitud": "413715N",
+        "provincia": "ZARAGOZA",
+        "altitud": "254",
+        "indicativo": "9434P",
+        "nombre": "ZARAGOZA, VALDESPARTERA",
+        "indsinop": "08159",
+        "longitud": "005606W"
+    },
+    {
+      "latitud" : "411952N",
+      "provincia" : "ZARAGOZA",
+      "altitud" : "582",
+      "indicativo" : "9394X",
+      "nombre" : "CALATAYUD",
+      "indsinop" : "08156",
+      "longitud" : "013843W"
+    }, {
+      "latitud" : "410652N",
+      "provincia" : "ZARAGOZA",
+      "altitud" : "779",
+      "indicativo" : "9390",
+      "nombre" : "DAROCA",
+      "indsinop" : "08157",
+      "longitud" : "012436W"
+    },{
+      "latitud" : "413938N",
+      "provincia" : "ZARAGOZA",
+      "altitud" : "249",
+      "indicativo" : "9434",
+      "nombre" : "ZARAGOZA, AEROPUERTO",
+      "indsinop" : "08160",
+      "longitud" : "010015W"
+    },
+    {
+        "latitud": "364304N",
+        "provincia": "MALAGA",
+        "altitud": "54",
+        "indicativo": "6156X",
+        "nombre": "MÁLAGA, CENTRO METEOROLÓGICO",
+        "indsinop": "08481",
+        "longitud": "042854W"
+    },
+    {
+        "latitud": "393339N",
+        "provincia": "ILLES BALEARS",
+        "altitud": "8",
+        "indicativo": "B278",
+        "nombre": "PALMA DE MALLORCA, AEROPUERTO",
+        "indsinop": "08306",
+        "longitud": "024412E"
+    },
+    {
+        "latitud": "275504N",
+        "provincia": "LAS PALMAS",
+        "altitud": "32",
+        "indicativo": "C649I",
+        "nombre": "GRAN CANARIA AEROPUERTO",
+        "indsinop": "60030",
+        "longitud": "152343W"
+    },
+    {
+      "latitud" : "285707N",
+      "provincia" : "LAS PALMAS",
+      "altitud" : "14",
+      "indicativo" : "C029O",
+      "nombre" : "LANZAROTE AEROPUERTO",
+      "indsinop" : "60040",
+      "longitud" : "133601W"
+    },
+    {
+        "latitud": "431753N",
+        "provincia": "BIZKAIA",
+        "altitud": "42",
+        "indicativo": "1082",
+        "nombre": "BILBAO AEROPUERTO",
+        "indsinop": "08025",
+        "longitud": "025423W"
+    },
+    {
+        "latitud": "382221N",
+        "provincia": "ALICANTE",
+        "altitud": "81",
+        "indicativo": "8025",
+        "nombre": "ALACANT/ALICANTE",
+        "indsinop": "08359",
+        "longitud": "002939W"
+    },
+    {
+      "latitud" : "381658N",
+      "provincia" : "ALICANTE",
+      "altitud" : "43",
+      "indicativo" : "8019",
+      "nombre" : "ALICANTE-ELCHE AEROPUERTO",
+      "indsinop" : "08360",
+      "longitud" : "003415W"
+    },
+    {
+        "latitud": "375056N",
+        "provincia": "CORDOBA",
+        "altitud": "90",
+        "indicativo": "5402",
+        "nombre": "CÓRDOBA AEROPUERTO",
+        "indsinop": "08410",
+        "longitud": "045048W"
+    },
+    {
+        "latitud": "413827N",
+        "provincia": "VALLADOLID",
+        "altitud": "735",
+        "indicativo": "2422",
+        "nombre": "VALLADOLID",
+        "indsinop": "08141",
+        "longitud": "044516W"
+    },
+    {
+        "latitud": "421419N",
+        "provincia": "PONTEVEDRA",
+        "altitud": "261",
+        "indicativo": "1495",
+        "nombre": "VIGO AEROPUERTO",
+        "indsinop": "08045",
+        "longitud": "083726W"
+    },
+    {
+        "latitud": "403749N",
+        "provincia": "GUADALAJARA",
+        "altitud": "721",
+        "indicativo": "3168D",
+        "nombre": "GUADALAJARA",
+        "indsinop": "08226",
+        "longitud": "030900W"
+    },
+    {
+      "latitud" : "373604N",
+      "provincia" : "MURCIA",
+      "altitud" : "17",
+      "indicativo" : "7012C",
+      "nombre" : "CARTAGENA",
+      "indsinop" : "08434",
+      "longitud" : "005916W"
+    },
+    {
+      "latitud" : "373917N",
+      "provincia" : "MURCIA",
+      "altitud" : "312",
+      "indicativo" : "7209",
+      "nombre" : "LORCA",
+      "indsinop" : "08426",
+      "longitud" : "014114W"
+    },
+    {
+      "latitud" : "380007N",
+      "provincia" : "MURCIA",
+      "altitud" : "61",
+      "indicativo" : "7178I",
+      "nombre" : "MURCIA",
+      "indsinop" : "08430",
+      "longitud" : "011015W"
+    },
+    {
+      "latitud" : "413515N",
+      "provincia" : "BARCELONA",
+      "altitud" : "74",
+      "indicativo" : "0252D",
+      "nombre" : "ARENYS DE MAR",
+      "indsinop" : "08186",
+      "longitud" : "023224E"
+    }, {
+      "latitud" : "411734N",
+      "provincia" : "BARCELONA",
+      "altitud" : "4",
+      "indicativo" : "0076",
+      "nombre" : "BARCELONA AEROPUERTO",
+      "indsinop" : "08181",
+      "longitud" : "020412E"
+    },
+    {
+      "latitud" : "414312N",
+      "provincia" : "BARCELONA",
+      "altitud" : "291",
+      "indicativo" : "0149X",
+      "nombre" : "MANRESA",
+      "indsinop" : "08174",
+      "longitud" : "015025E"
+    },
+    {
+      "latitud" : "415442N",
+      "provincia" : "GIRONA",
+      "altitud" : "143",
+      "indicativo" : "0367",
+      "nombre" : "GIRONA AEROPUERTO",
+      "indsinop" : "08184",
+      "longitud" : "024548E"
+    }, {
+      "latitud" : "420616N",
+      "provincia" : "GIRONA",
+      "altitud" : "157",
+      "indicativo" : "0372C",
+      "nombre" : "PORQUERES",
+      "indsinop" : "08120",
+      "longitud" : "024549E"
+    }, {
+      "latitud" : "421129N",
+      "provincia" : "GIRONA",
+      "altitud" : "675",
+      "indicativo" : "0324A",
+      "nombre" : "RIPOLL",
+      "indsinop" : "08118",
+      "longitud" : "021146E"
+    }, {
+      "latitud" : "410842N",
+      "provincia" : "TARRAGONA",
+      "altitud" : "71",
+      "indicativo" : "0016A",
+      "nombre" : "REUS AEROPUERTO",
+      "indsinop" : "08175",
+      "longitud" : "010949E"
+    },
+    {
+      "latitud" : "431234N",
+      "provincia" : "GIPUZKOA",
+      "altitud" : "119",
+      "indicativo" : "1050J",
+      "nombre" : "ELGOIBAR",
+      "indsinop" : "08036",
+      "longitud" : "022448W"
+    },
+    {
+      "latitud" : "432125N",
+      "provincia" : "GIPUZKOA",
+      "altitud" : "4",
+      "indicativo" : "1014A",
+      "nombre" : "SAN SEBASTIÁN AEROPUERTO",
+      "indsinop" : "08029",
+      "longitud" : "014732W"
+    },
+    {
+      "latitud" : "423350N",
+      "provincia" : "LEON",
+      "altitud" : "534",
+      "indicativo" : "1549",
+      "nombre" : "PONFERRADA",
+      "indsinop" : "08053",
+      "longitud" : "063600W"
+    }, {
+      "latitud" : "430641N",
+      "provincia" : "LUGO",
+      "altitud" : "445",
+      "indicativo" : "1505",
+      "nombre" : "LUGO AEROPUERTO",
+      "indsinop" : "08008",
+      "longitud" : "072727W"
+    },
+    {
+      "latitud" : "421931N",
+      "provincia" : "OURENSE",
+      "altitud" : "143",
+      "indicativo" : "1690A",
+      "nombre" : "OURENSE",
+      "indsinop" : "08048",
+      "longitud" : "075135W"
+    }, {
+      "latitud" : "420445N",
+      "provincia" : "OURENSE",
+      "altitud" : "616",
+      "indicativo" : "1735X",
+      "nombre" : "XINZO DE LIMIA",
+      "indsinop" : "08050",
+      "longitud" : "074401W"
+    },
+    {
+      "latitud" : "405734N",
+      "provincia" : "SALAMANCA",
+      "altitud" : "790",
+      "indicativo" : "2867",
+      "nombre" : "SALAMANCA AEROPUERTO",
+      "indsinop" : "08202",
+      "longitud" : "052954W"
+    },
+    {
+      "latitud" : "392906N",
+      "provincia" : "VALENCIA",
+      "altitud" : "56",
+      "indicativo" : "8414A",
+      "nombre" : "VALENCIA AEROPUERTO",
+      "indsinop" : "08284",
+      "longitud" : "002829W"
+    },
+    {
+      "latitud" : "392850N",
+      "provincia" : "VALENCIA",
+      "altitud" : "11",
+      "indicativo" : "8416Y",
+      "nombre" : "VALÈNCIA, VIVEROS",
+      "indsinop" : "08285",
+      "longitud" : "002159W"
+    },
+    {
+      "latitud" : "390006N",
+      "provincia" : "VALENCIA",
+      "altitud" : "88",
+      "indicativo" : "8293X",
+      "nombre" : "XÀTIVA",
+      "indsinop" : "08290",
+      "longitud" : "003125W"
+    },
+    {
+      "latitud" : "393432N",
+      "provincia" : "VALENCIA",
+      "altitud" : "758",
+      "indicativo" : "8309X",
+      "nombre" : "UTIEL",
+      "indsinop" : "08281",
+      "longitud" : "011441W"
+    },
+    {
+      "latitud" : "420039N",
+      "provincia" : "ZAMORA",
+      "altitud" : "715",
+      "indicativo" : "2755X",
+      "nombre" : "BENAVENTE",
+      "indsinop" : "08056",
+      "longitud" : "054000W"
+    },
+    {
+      "latitud" : "413056N",
+      "provincia" : "ZAMORA",
+      "altitud" : "656",
+      "indicativo" : "2614",
+      "nombre" : "ZAMORA",
+      "indsinop" : "08130",
+      "longitud" : "054407W"
+    },
+    {
+      "latitud" : "415629N",
+      "provincia" : "ZAMORA",
+      "altitud" : "850",
+      "indicativo" : "2775X",
+      "nombre" : "VILLARDECIERVOS",
+      "indsinop" : "08125",
+      "longitud" : "061647W"
+    },
+    {
+      "latitud" : "402102N",
+      "provincia" : "TERUEL",
+      "altitud" : "900",
+      "indicativo" : "8368U",
+      "nombre" : "TERUEL",
+      "indsinop" : "08235",
+      "longitud" : "010727W"
+    },
+    {
+      "latitud" : "410329N",
+      "provincia" : "TERUEL",
+      "altitud" : "334",
+      "indicativo" : "9573X",
+      "nombre" : "ALCAÑIZ",
+      "indsinop" : "08164",
+      "longitud" : "000830W"
+    },
+    {
+      "latitud" : "432157N",
+      "provincia" : "A CORUÑA",
+      "altitud" : "58",
+      "indicativo" : "1387",
+      "nombre" : "A CORUÑA",
+      "indsinop" : "08001",
+      "longitud" : "082517W"
+    },
+    {
+      "latitud" : "431825N",
+      "provincia" : "A CORUÑA",
+      "altitud" : "98",
+      "indicativo" : "1387E",
+      "nombre" : "A CORUÑA AEROPUERTO",
+      "indsinop" : "08002",
+      "longitud" : "082219W"
+    },
+    {
+      "latitud" : "434710N",
+      "provincia" : "A CORUÑA",
+      "altitud" : "90",
+      "indicativo" : "1351",
+      "nombre" : "ESTACA DE BARES",
+      "indsinop" : "08004",
+      "longitud" : "074106W"
+    },
+    {
+      "latitud" : "371123N",
+      "provincia" : "GRANADA",
+      "altitud" : "567",
+      "indicativo" : "5530E",
+      "nombre" : "GRANADA AEROPUERTO",
+      "indsinop" : "08419",
+      "longitud" : "034722W"
+    },
+    {
+      "latitud" : "374639N",
+      "provincia" : "JAEN",
+      "altitud" : "580",
+      "indicativo" : "5270B",
+      "nombre" : "JAÉN",
+      "indsinop" : "08417",
+      "longitud" : "034832W"
+    },
+    {
+      "latitud" : "382040N",
+      "provincia" : "JAEN",
+      "altitud" : "770",
+      "indicativo" : "5246",
+      "nombre" : "SANTA ELENA",
+      "indsinop" : "08350",
+      "longitud" : "033207W"
+    },
+    {
+      "latitud" : "392817N",
+      "provincia" : "CACERES",
+      "altitud" : "394",
+      "indicativo" : "3469A",
+      "nombre" : "CÁCERES",
+      "indsinop" : "08261",
+      "longitud" : "062020W"
+    },
+    {
+      "latitud" : "400235N",
+      "provincia" : "CACERES",
+      "altitud" : "415",
+      "indicativo" : "3519X",
+      "nombre" : "PLASENCIA",
+      "indsinop" : "08252",
+      "longitud" : "060509W"
+    },
+    {
+      "latitud" : "385300N",
+      "provincia" : "BADAJOZ",
+      "altitud" : "185",
+      "indicativo" : "4452",
+      "nombre" : "BADAJOZ AEROPUERTO",
+      "indsinop" : "08330",
+      "longitud" : "064850W"
+    },
+    {
+      "latitud" : "355319N",
+      "provincia" : "CEUTA",
+      "altitud" : "87",
+      "indicativo" : "5000C",
+      "nombre" : "CEUTA",
+      "indsinop" : "60320",
+      "longitud" : "052049W"
+    },
+    {
+      "latitud" : "351635N",
+      "provincia" : "MELILLA",
+      "altitud" : "52",
+      "indicativo" : "6000A",
+      "nombre" : "MELILLA",
+      "indsinop" : "60338",
+      "longitud" : "025723W"
+    },
+    {
+      "latitud" : "424637N",
+      "provincia" : "NAVARRA",
+      "altitud" : "459",
+      "indicativo" : "9263D",
+      "nombre" : "PAMPLONA, AEROPUERTO",
+      "indsinop" : "08085",
+      "longitud" : "013900W"
+    }
+  ]

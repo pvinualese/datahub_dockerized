@@ -1,0 +1,73 @@
+
+version: "3.5"
+services:
+  mongo-prec:
+    image: mongo:${MONGO_VERSION}
+    container_name: mongo_datahub_clima
+    command: --nojournal
+    expose:
+      - 27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    healthcheck:
+      test: |
+        host=`hostname --ip-address || echo '127.0.0.1'`; 
+        mongo-prec --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1
+    volumes: 
+      - mongo-db-data-prec:/data/db 
+    networks:
+      - datahub_network
+    restart: unless-stopped
+
+  orion-prec:
+    image: fiware/orion-ld:${ORION_VERSION}
+    container_name: orion_datahub_clima
+    depends_on:
+      - mongo-prec
+    command: -dbhost mongo-prec -lmtmp -logLevel WARN
+    expose:
+      - 1026
+    environment:
+      ORIONLD_MONGO_USER: ${MONGO_ROOT_USERNAME}
+      ORIONLD_MONGO_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    networks:
+      - datahub_network
+    restart: unless-stopped
+    healthcheck:
+      test: curl --fail -s http://orion-prec:1026/version || exit 1
+
+
+  draco-prec:
+    #image: ging/fiware-draco:${DRACO_VERSION}
+    build:
+      context: ./draco
+      args:
+        DRACO_VERSION: ${DRACO_VERSION}
+      target: ${TARGET} 
+    container_name: draco_datahub_clima
+    environment:
+      NIFI_WEB_HTTPS_PORT: ${DRACO_WEB_PORT}
+      NIFI_WEB_HTTPS_HOST: 0.0.0.0
+      NIFI_WEB_PROXY_HOST: ${IP_SERVER}:${DRACO_WEB_PORT}
+      SINGLE_USER_CREDENTIALS_USERNAME: ${DRACO_USERNAME}
+      SINGLE_USER_CREDENTIALS_PASSWORD: ${DRACO_PASSWORD}
+    ports:
+      - "${DRACO_WEB_PORT}:${DRACO_WEB_PORT}"
+      - "5050-5059:5050-5059"
+    networks:
+      - datahub_network
+    volumes: 
+      - ./draco/templates:/opt/nifi/nifi-current/conf/templates
+    restart: unless-stopped
+    healthcheck:
+      test: curl --fail -s -k https://draco-prec:${DRACO_WEB_PORT}/nifi-api/system-diagnostics || exit 1
+      start_period: 1m
+
+volumes: 
+  mongo-db-data-prec:
+
+networks:
+  datahub_network:
+    external: true
+    name: datahub_network
