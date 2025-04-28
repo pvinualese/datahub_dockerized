@@ -3,7 +3,7 @@ version: "3.5"
 services:
   mongo-prec:
     image: mongo:${MONGO_VERSION}
-    container_name: mongo_datahub_clima
+    container_name: mongo_datahub_prec
     command: --nojournal
     expose:
       - 27017
@@ -22,7 +22,7 @@ services:
 
   orion-prec:
     image: fiware/orion-ld:${ORION_VERSION}
-    container_name: orion_datahub_clima
+    container_name: orion_datahub_prec
     depends_on:
       - mongo-prec
     command: -dbhost mongo-prec -lmtmp -logLevel WARN
@@ -45,7 +45,7 @@ services:
       args:
         DRACO_VERSION: ${DRACO_VERSION}
       target: ${TARGET} 
-    container_name: draco_datahub_clima
+    container_name: draco_datahub_prec
     environment:
       NIFI_WEB_HTTPS_PORT: ${DRACO_WEB_PORT}
       NIFI_WEB_HTTPS_HOST: 0.0.0.0
