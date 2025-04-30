@@ -1,0 +1,16 @@
+services:
+  oauth2-proxy:
+    build:
+      context: ./
+      dockerfile: Dockerfile  # Dockerfile creado arriba
+    container_name: oauth2-proxy
+    ports:
+      - "4180:4180"
+    networks:
+      - datahub_network
+    
+
+networks:
+  datahub_network:
+    external: true
+    name: datahub_network

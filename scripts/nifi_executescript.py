@@ -4,6 +4,15 @@ from java.io import InputStream, OutputStream
 
 # Define the transformation function
 def transform_json(input_json):
+
+    # Get 'keywords' as a string
+    keywords_str = input_json.get("keywords", "[]")  # Default to "[]" if no keywords
+    try:
+        # Convert the string into a list using json.loads()
+        tags = json.loads(keywords_str)
+    except json.JSONDecodeError:
+        # In case the string is not a valid JSON, set tags as an empty list
+        tags = []
     # Define the mapping from the original JSON to the MCP structure
     transformed = [{
         "entityType": "dataset",
@@ -12,10 +21,10 @@ def transform_json(input_json):
             "__type": "DatasetProperties",
             "name": input_json.get("packageName", "Unknown Name"),
             "description": input_json.get("packageDescription", "No description available"),
+            "tags": tags,
             "customProperties": {
                 "resource_rights": input_json.get("resourceRights", "Unknown Resource Rights"),
                 "spatial_uri": input_json.get("spatialURI", "Unknown Spatial URI"),
-                "keywords": input_json.get("keywords", ["Unknown Keyword"]),
                 "byte_size": input_json.get("byteSize", 0),
                 "contact_point": input_json.get("contactPoint", "Unknown URI"),
                 "access_url": input_json.get("accessURL", "Unknown Access URL"),

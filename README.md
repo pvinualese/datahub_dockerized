@@ -13,4 +13,5 @@
 - datahub ingest -c recipe.yml
 
 
-
+# servicio autenticacion keycloak + oauth
+- al arrancar keycloak ir a Users y añadir email al usuario admin, si no oauth fallará

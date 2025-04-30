@@ -1,0 +1,70 @@
+services:
+  keycloak:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: keycloak
+    ports:
+      - "8585:8585"
+    restart: unless-stopped
+    networks:
+       - datahub_network
+networks:
+  datahub_network:
+    external: true
+    name: datahub_network
+
+# version: "3.8"
+
+# services:
+#   keycloak:
+#     image: quay.io/keycloak/keycloak:23.0.6
+#     container_name: keycloak
+#     environment:
+#       - KEYCLOAK_ADMIN=admin
+#       - KEYCLOAK_ADMIN_PASSWORD=admin
+#       - KC_HTTP_PORT=8585
+#     ports:
+#       - "8585:8080"
+#     # command: ["start-dev"]
+#     command: ["start-dev", "--http-port", "8585"]
+#     restart: unless-stopped
+#     networks:
+#       - keycloak_network
+
+#   oauth2-proxy:
+#     image: bitnami/oauth2-proxy:latest
+#     container_name: oauth2-proxy
+#     environment:
+#       - OAUTH2_PROXY_CLIENT_ID=oauth2-proxy
+#       - OAUTH2_PROXY_CLIENT_SECRET=834801d1-c62e-4625-9d0b-9438942834bc
+#       - OAUTH2_PROXY_COOKIE_SECRET=12345678901234567890123456789012
+#       - OAUTH2_PROXY_COOKIE_EXPIRATION=5m
+#       - OAUTH2_PROXY_COOKIE_REFRESH=0s
+#       - OAUTH2_PROXY_UPSTREAM=http://172.18.0.4:1024
+#       - OAUTH2_PROXY_PROVIDER=oidc
+#       - OAUTH2_PROXY_OIDC_ISSUER_URL=http://keycloak:8585/auth/realms/master
+#       - OAUTH2_PROXY_REDIRECT_URL=http://localhost:4180/oauth2/callback
+#     ports:
+#       - "4180:4180"
+#     networks:
+#       - keycloak_network
+#     command: |
+#       --http-address=0.0.0.0:4180
+#       --email-domain="*"
+#       --cookie-secure=false
+#       --cookie-expire=5m
+#       --cookie-refresh=0s
+#       --upstream=http://172.18.0.4:1024
+#       --provider=oidc
+#       --client-id=oauth2-proxy
+#       --client-secret=834801d1-c62e-4625-9d0b-9438942834bc
+#       --oidc-issuer-url="http://keycloak:8585/auth/realms/master"
+#       --redirect-url="http://localhost:4180/oauth2/callback"
+#       --set-authorization-header=true
+#       --pass-authorization-header=true
+#       --pass-user-headers=true
+
+# networks:
+#   keycloak_network:
+#     driver: bridge
