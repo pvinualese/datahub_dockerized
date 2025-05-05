@@ -14,13 +14,20 @@ source:
       database: "datahub"
       username: "datahub"
       password: "datahub"
+    stateful_ingestion:
+      enabled: true
+      ignore_old_state: true
+    reporting:
+      enabled: false
     # token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjE1MWRhNjJkLTMzYmUtNGIzZi05Y2U5LTEyZDY0MjI4YmY5ZiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkwMzMxNTksImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.1qCnI8Af0sOjnTcuf7wDdpTuOPI-8Nmz8fcqB-wsUHg"
     # stateful_ingestion:
     #   enabled: true
     #   ignore_old_state: true  # Si quieres ignorar el estado anterior y realizar la ingesta completa
     urn_pattern:
       allow:
-        - ".*"  # Incluir todos los URNs; puedes filtrarlo con regex si es necesario
+        - .*
+      deny:
+        - ^urn:li:dataJob.*
 
 sink:
   # Configuración del destino para la ingesta

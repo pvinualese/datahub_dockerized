@@ -54,9 +54,10 @@ services:
     command: |
       bash -c "pip install -U acryl-datahub[datahub-rest] && \
       pip install pymysql && \
-      datahub ingest run --config /datahub/scripts/config.yaml"
+      datahub ingest run --config /datahub/scripts/ingesta_clima.yaml && \
+      datahub ingest run --config /datahub/scripts/ingesta_prec.yaml"
 
- 
+    # 
     #          &&  python3 /datahub/scripts/federado_to_datahub_container.py" 
     restart: on-failure
   datahub-frontend-react-federado:

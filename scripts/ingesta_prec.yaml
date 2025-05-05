@@ -1,0 +1,41 @@
+# config.yaml
+pipeline_name: datahub_source_prec
+datahub_api:
+  server: "http://138.4.7.113:8080"  # URL de la instancia de origen
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjY0OWJhYzAwLTgyMTQtNDBkOS04MWIyLWFjMWMxYzg5ZmU2NCIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkwNDI3MDYsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.uLYDhXCaI9qTePmjC6xAIa8v1n5EVJUny8nRmJpEv4g"
+
+source:
+  type: "datahub"
+  # Configuración de la fuente, para el acceso a la base de datos y Kafka
+  config:
+    database_connection:
+      scheme: "mysql+pymysql"
+      host_port: "138.4.7.113:3306"
+      database: "datahub"
+      username: "datahub"
+      password: "datahub"
+    stateful_ingestion:
+      enabled: true
+      ignore_old_state: true
+      # ignore_old_state: true  # Si quieres ignorar el estado anterior y realizar la ingesta completa
+    # token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjE1MWRhNjJkLTMzYmUtNGIzZi05Y2U5LTEyZDY0MjI4YmY5ZiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkwMzMxNTksImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.1qCnI8Af0sOjnTcuf7wDdpTuOPI-8Nmz8fcqB-wsUHg"
+    # stateful_ingestion:
+    #   enabled: true
+    #   ignore_old_state: true  # Si quieres ignorar el estado anterior y realizar la ingesta completa
+    urn_pattern:
+      allow:
+        - .*
+      deny:
+        - ^urn:li:dataJob.*
+
+sink:
+  # Configuración del destino para la ingesta
+  type: "datahub-rest"
+  config:
+    server: "http://138.4.7.113:8084"  # URL de la instancia de destino
+    # token: "<your-bearer-token>"  # Si es necesario, agrega el token de autenticación
+
+# # Configuración adicional si deseas activar la ingesta asincrónica y otros parámetros
+# ingest:
+#   async: true  # Habilitar la ingesta asincrónica
+#   commit_state_interval: 1000  # Intervalo para guardar el estado de la ingesta
