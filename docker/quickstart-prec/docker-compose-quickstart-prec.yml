@@ -138,8 +138,8 @@ services:
         condition: service_completed_successfully
       mysql-setup-prec:
         condition: service_completed_successfully
-      neo4j-prec:
-        condition: service_healthy
+      # neo4j-prec:
+      #   condition: service_healthy
     environment:
     - BACKFILL_BROWSE_PATHS_V2=true
     - DATAHUB_GMS_HOST=datahub-gms-prec

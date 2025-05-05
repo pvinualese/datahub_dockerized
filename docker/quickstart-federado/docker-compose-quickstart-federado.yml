@@ -51,9 +51,13 @@ services:
     image: ${DATAHUB_ACTIONS_IMAGE:-acryldata/datahub-actions}:${ACTIONS_VERSION:-head}
     volumes:
       - ../../scripts:/datahub/scripts
-    # command: >
-    #   bash -c "pip install -U acryl-datahub[datahub-rest] && 
-    #            python3 /datahub/scripts/federado_to_datahub_container.py" 
+    command: |
+      bash -c "pip install -U acryl-datahub[datahub-rest] && \
+      pip install pymysql && \
+      datahub ingest run --config /datahub/scripts/config.yaml"
+
+ 
+    #          &&  python3 /datahub/scripts/federado_to_datahub_container.py" 
     restart: on-failure
   datahub-frontend-react-federado:
     depends_on:
@@ -138,8 +142,8 @@ services:
         condition: service_completed_successfully
       mysql-setup-federado:
         condition: service_completed_successfully
-      neo4j-federado:
-        condition: service_healthy
+      # neo4j-federado:
+      #   condition: service_healthy
     environment:
     - BACKFILL_BROWSE_PATHS_V2=true
     - DATAHUB_GMS_HOST=datahub-gms-federado
@@ -163,6 +167,8 @@ services:
     image: ${DATAHUB_UPGRADE_IMAGE:-acryldata/datahub-upgrade}:${DATAHUB_VERSION:-head}
     labels:
       datahub_setup_job: true
+    restart: "no"
+
   elasticsearch-federado:
     deploy:
       resources:
