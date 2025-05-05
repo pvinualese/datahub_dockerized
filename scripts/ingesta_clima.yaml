@@ -17,12 +17,6 @@ source:
     stateful_ingestion:
       enabled: true
       ignore_old_state: true
-    reporting:
-      enabled: false
-    # token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjE1MWRhNjJkLTMzYmUtNGIzZi05Y2U5LTEyZDY0MjI4YmY5ZiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkwMzMxNTksImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.1qCnI8Af0sOjnTcuf7wDdpTuOPI-8Nmz8fcqB-wsUHg"
-    # stateful_ingestion:
-    #   enabled: true
-    #   ignore_old_state: true  # Si quieres ignorar el estado anterior y realizar la ingesta completa
     urn_pattern:
       allow:
         - .*
@@ -34,9 +28,3 @@ sink:
   type: "datahub-rest"
   config:
     server: "http://138.4.7.113:8084"  # URL de la instancia de destino
-    # token: "<your-bearer-token>"  # Si es necesario, agrega el token de autenticación
-
-# # Configuración adicional si deseas activar la ingesta asincrónica y otros parámetros
-# ingest:
-#   async: true  # Habilitar la ingesta asincrónica
-#   commit_state_interval: 1000  # Intervalo para guardar el estado de la ingesta
