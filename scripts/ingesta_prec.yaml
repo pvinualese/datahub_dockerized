@@ -1,8 +1,8 @@
 # config.yaml
 pipeline_name: datahub_source_prec
 datahub_api:
-  server: "http://138.4.7.113:8080"  # URL de la instancia de origen
-  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjY0OWJhYzAwLTgyMTQtNDBkOS04MWIyLWFjMWMxYzg5ZmU2NCIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkwNDI3MDYsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.uLYDhXCaI9qTePmjC6xAIa8v1n5EVJUny8nRmJpEv4g"
+  server: "http://datahub-gms-prec:8080"  # URL de la instancia de origen
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImIwNDA1ZDAyLWRiYmYtNDllZi04YzVhLTQ3NTUwNjI1NThiZiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkxMTc0MDMsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9._krzApm2kqwE9Ugst9lCzXKVCr0Mm74DrUVMPP7SlRU" #lo podemos coger de NIfi o crear otro en datahub
 
 source:
   type: "datahub"
@@ -10,7 +10,7 @@ source:
   config:
     database_connection:
       scheme: "mysql+pymysql"
-      host_port: "138.4.7.113:3306"
+      host_port: "mysql-prec:3306"
       database: "datahub"
       username: "datahub"
       password: "datahub"
@@ -27,4 +27,4 @@ sink:
   # Configuración del destino para la ingesta
   type: "datahub-rest"
   config:
-    server: "http://138.4.7.113:8084"  # URL de la instancia de destino
+    server: "http://datahub-gms-federado:8080"  # URL de la instancia de destino

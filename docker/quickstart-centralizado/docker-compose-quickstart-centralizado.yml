@@ -30,6 +30,8 @@ services:
     - ${DATAHUB_MAPPED_KAFKA_BROKER_PORT:-9095}:9092
     volumes:
     - broker-centralizado:/var/lib/kafka/data/
+    networks:
+      - datahub_network
   datahub-actions-centralizado:
     depends_on:
       datahub-gms-centralizado:
@@ -60,6 +62,8 @@ services:
     # 
     #          &&  python3 /datahub/scripts/centralizado_to_datahub_container.py" 
     restart: on-failure
+    networks:
+      - datahub_network
   datahub-frontend-react-centralizado:
     depends_on:
       datahub-gms-centralizado:
@@ -81,6 +85,8 @@ services:
     - ${DATAHUB_MAPPED_FRONTEND_PORT:-9005}:9002
     volumes:
     - ${HOME}/.datahub/plugins:/etc/datahub/plugins
+    networks:
+      - datahub_network
   datahub-gms-centralizado:
     depends_on:
       datahub-upgrade-centralizado:
@@ -129,6 +135,8 @@ services:
     - ${DATAHUB_MAPPED_GMS_PORT:-8086}:8080
     volumes:
     - ${HOME}/.datahub/plugins:/etc/datahub/plugins
+    networks:
+      - datahub_network
   datahub-upgrade-centralizado:
     build:
         context: ../../
@@ -169,6 +177,8 @@ services:
     labels:
       datahub_setup_job: true
     restart: "no"
+    networks:
+      - datahub_network
 
   elasticsearch-centralizado:
     deploy:
@@ -192,6 +202,8 @@ services:
     - ${DATAHUB_MAPPED_ELASTIC_PORT:-9203}:9200
     volumes:
     - esdata-centralizado:/usr/share/elasticsearch/data
+    networks:
+      - datahub_network
   elasticsearch-setup-centralizado:
     depends_on:
       elasticsearch-centralizado:
@@ -206,6 +218,8 @@ services:
     image: ${DATAHUB_ELASTIC_SETUP_IMAGE:-acryldata/datahub-elasticsearch-setup}:${DATAHUB_VERSION:-head}
     labels:
       datahub_setup_job: true
+    networks:
+      - datahub_network
   kafka-setup-centralizado:
     depends_on:
       broker-centralizado:
@@ -221,6 +235,8 @@ services:
     image: ${DATAHUB_KAFKA_SETUP_IMAGE:-acryldata/datahub-kafka-setup}:${DATAHUB_VERSION:-head}
     labels:
       datahub_setup_job: true
+    networks:
+      - datahub_network
   mysql-centralizado:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --default-authentication-plugin=mysql_native_password
     environment:
@@ -242,6 +258,8 @@ services:
     restart: on-failure
     volumes:
     - mydb-centralizado:/var/lib/mysql
+    networks:
+      - datahub_network
   mysql-setup-centralizado:
     depends_on:
       mysql-centralizado:
@@ -256,6 +274,8 @@ services:
     image: ${DATAHUB_MYSQL_SETUP_IMAGE:-acryldata/datahub-mysql-setup}:${DATAHUB_VERSION:-head}
     labels:
       datahub_setup_job: true
+    networks:
+      - datahub_network
   neo4j-centralizado:
     environment:
     - NEO4J_AUTH=neo4j/datahub
@@ -275,6 +295,8 @@ services:
     - ${DATAHUB_MAPPED_NEO4J_BOLT_PORT:-7690}:7687
     volumes:
     - neo4jdata-centralizado:/data
+    networks:
+      - datahub_network
   schema-registry-centralizado:
     depends_on:
       broker-centralizado:
@@ -293,6 +315,8 @@ services:
     image: ${DATAHUB_CONFLUENT_SCHEMA_REGISTRY_IMAGE:-confluentinc/cp-schema-registry}:${DATAHUB_CONFLUENT_VERSION:-7.4.0}
     ports:
     - ${DATAHUB_MAPPED_SCHEMA_REGISTRY_PORT:-8087}:8081
+    networks:
+      - datahub_network
   zookeeper-centralizado:
     environment:
     - ZOOKEEPER_CLIENT_PORT=2181
@@ -310,6 +334,8 @@ services:
     volumes:
     - zkdata-centralizado:/var/lib/zookeeper/data
     - zklogs-centralizado:/var/lib/zookeeper/log
+    networks:
+      - datahub_network
   
 volumes:
   broker-centralizado: null

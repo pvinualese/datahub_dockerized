@@ -1,8 +1,8 @@
 # config.yaml
 pipeline_name: datahub_source_clima
 datahub_api:
-  server: "http://138.4.7.113:8082"  # URL de la instancia de origen
-  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjNkZjc0Mzk5LWIwNGUtNDBkOS05M2U1LTFjNmFhNWQ3MmQwMiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkwNDAzMDUsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.QATmp8c0rTD25wAhd13ulDggUOx_P1QVIFcTyq_yvkI"
+  server: "http://datahub-gms-clima:8080"  # URL de la instancia de origen
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImZlZTc3OTljLTUwYWUtNDI3Zi1iZjkzLWViMjQzMDc5YjMzZSIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkxMTU5NzEsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.cWTYkpG7eGbagKSpb84lYtYJEW5AcPzrm-0eqeIzozo"
 
 source:
   type: "datahub"
@@ -10,7 +10,7 @@ source:
   config:
     database_connection:
       scheme: "mysql+pymysql"
-      host_port: "138.4.7.113:3307"
+      host_port: "mysql-clima:3306"
       database: "datahub"
       username: "datahub"
       password: "datahub"
@@ -27,4 +27,4 @@ sink:
   # Configuración del destino para la ingesta
   type: "datahub-rest"
   config:
-    server: "http://138.4.7.113:8084"  # URL de la instancia de destino
+    server: "http://datahub-gms-federado:8080"  # URL de la instancia de destino
