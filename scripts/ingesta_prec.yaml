@@ -2,7 +2,7 @@
 pipeline_name: datahub_source_prec
 datahub_api:
   server: "http://datahub-gms-prec:8080"  # URL de la instancia de origen
-  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImIwNDA1ZDAyLWRiYmYtNDllZi04YzVhLTQ3NTUwNjI1NThiZiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkxMTc0MDMsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9._krzApm2kqwE9Ugst9lCzXKVCr0Mm74DrUVMPP7SlRU" #lo podemos coger de NIfi o crear otro en datahub
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjMwZmU3NmFkLWY3ZmEtNDU5Ni05Mjc4LWM2NDU2NWNlYTIwYyIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkxMjA0MjksImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.lLjC-TdBN45U4lwb7NAwPjEBlRq6aGrx79i76UGM53g" #lo podemos coger de NIfi o crear otro en datahub
 
 source:
   type: "datahub"

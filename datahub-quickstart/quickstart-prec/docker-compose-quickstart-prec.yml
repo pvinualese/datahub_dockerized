@@ -136,7 +136,7 @@ services:
   datahub-upgrade-prec:
     build:
         context: ../../
-        dockerfile: docker/datahub-upgrade/Dockerfile
+        dockerfile: datahub-quickstart/datahub-upgrade/Dockerfile
     command:
     - -u
     - SystemUpdate
