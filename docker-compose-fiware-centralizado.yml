@@ -1,8 +1,8 @@
 version: "3.5"
 services:
-   mongo-federado:
+   mongo-centralizado:
      image: mongo:${MONGO_VERSION}
-     container_name: mongo_datahub_federado
+     container_name: mongo_datahub_centralizado
      command: --nojournal
      ports:
      - "27019:27017"
@@ -14,19 +14,19 @@ services:
      healthcheck:
        test: |
          host=`hostname --ip-address || echo '127.0.0.1'`; 
-         mongo-federado --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1
+         mongo-centralizado --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1
      volumes: 
-       - mongo-db-data-federado:/data/db 
+       - mongo-db-data-centralizado:/data/db 
      networks:
        - datahub_network
      restart: unless-stopped
  
-   orion-federado:
+   orion-centralizado:
      image: fiware/orion-ld:${ORION_VERSION}
-     container_name: orion_datahub_federado
+     container_name: orion_datahub_centralizado
      depends_on:
-       - mongo-federado
-     command: -dbhost mongo-federado -lmtmp -logLevel WARN
+       - mongo-centralizado
+     command: -dbhost mongo-centralizado -lmtmp -logLevel WARN
      ports:
      - "1028:1026"
      # expose:
@@ -39,18 +39,18 @@ services:
        - datahub_network
      restart: unless-stopped
      healthcheck:
-       test: curl --fail -s http://orion-federado:1026/version || exit 1
+       test: curl --fail -s http://orion-centralizado:1026/version || exit 1
  
  
  
-   draco-federado:
+   draco-centralizado:
      #image: ging/fiware-draco:${DRACO_VERSION}
      build:
        context: ./draco
        args:
          DRACO_VERSION: ${DRACO_VERSION}
        target: ${TARGET} 
-     container_name: draco_datahub_federado
+     container_name: draco_datahub_centralizado
      environment:
        NIFI_WEB_HTTPS_PORT: 9292
        NIFI_WEB_HTTPS_HOST: 0.0.0.0
@@ -66,11 +66,11 @@ services:
        - ./draco/templates:/opt/nifi/nifi-current/conf/templates
      restart: unless-stopped
      healthcheck:
-       test: curl --fail -s -k https://draco-federado:9292/nifi-api/system-diagnostics || exit 1
+       test: curl --fail -s -k https://draco-centralizado:9292/nifi-api/system-diagnostics || exit 1
        start_period: 1m
  
 volumes: 
-   mongo-db-data-federado:
+   mongo-db-data-centralizado:
  
 networks:
    datahub_network:
