@@ -1,28 +1,30 @@
 import json
 from org.apache.nifi.processor.io import StreamCallback
 from java.io import InputStream, OutputStream
+import time
 
 def transform_json(input_json):
+    # Get 'keywords' as a string
     keywords_str = input_json.get("keywords", "[]")
     try:
-        tags_list = json.loads(keywords_str)
-        if not isinstance(tags_list, list):
-            tags_list = []
-    except json.JSONDecodeError:
-        tags_list = []
+        tags = json.loads(keywords_str)
+    except Exception:
+        tags = []
 
-    entity_urn = "urn:li:dataset:(urn:li:dataPlatform:nifi," + input_json.get('packageName', 'Unknown Name') + ",PROD)"
+    urn = "urn:li:dataset:(urn:li:dataPlatform:nifi," + input_json.get('packageName', 'Unknown Name') + ",PROD)"
 
-    # Aspecto de DatasetProperties
-    dataset_properties_aspect = {
-        "entityType": "dataset",
-        "entityUrn": entity_urn,
-        "changeType": "UPSERT",
-        "aspectName": "datasetProperties",
-        "aspect": {
-            "value": {
+    # Get current timestamp in milliseconds
+    current_time_ms = int(time.time() * 1000)
+
+    transformed = [
+        {
+            "entityType": "dataset",
+            "entityUrn": urn,
+            "aspect": {
+                "__type": "DatasetProperties",  # Aspecto del dataset
                 "name": input_json.get("packageName", "Unknown Name"),
                 "description": input_json.get("packageDescription", "No description available"),
+                "tags": tags,
                 "customProperties": {
                     "resource_rights": input_json.get("resourceRights", "Unknown Resource Rights"),
                     "spatial_uri": input_json.get("spatialURI", "Unknown Spatial URI"),
@@ -53,25 +55,29 @@ def transform_json(input_json):
                     "link": input_json.get("Link", "Unknown link")
                 }
             }
-        }
-    }
-
-    # Aspecto de globalTags (si hay tags)
-    global_tags_aspect = {
-        "entityType": "dataset",
-        "entityUrn": entity_urn,
-        "changeType": "UPSERT",
-        "aspectName": "globalTags",
-        "aspect": {
-            "value": {
-                "tags": [{"tag": f"urn:li:tag:{tag.strip().lower().replace(' ', '_')}"} for tag in tags_list]
+        },
+        {
+            "entityType": "dataset",
+            "entityUrn": urn,
+            "aspect": {
+                "__type": "Ownership",
+                "owners": [
+                    {
+                        "owner": "urn:li:corpGroup:AEMET",
+                        "type": "DATAOWNER",
+                        "source": {
+                            "type": "MANUAL",
+                            "url": "https://www.aemet.es"
+                        }
+                    }
+                ],
+                "lastModified": {
+                    "actor": "urn:li:corpGroup:AEMET",
+                    "time": current_time_ms
+                }
             }
         }
-    }
-
-    transformed = [dataset_properties_aspect]
-    if tags_list:
-        transformed.append(global_tags_aspect)
+    ]
 
     return transformed
 
@@ -79,11 +85,7 @@ def transform_json(input_json):
 flowFile = session.get()
 if flowFile is not None:
     json_attributes = flowFile.getAttribute("JSONAttributes")
-    try:
-        input_json = json.loads(json_attributes)
-        transformed_json = transform_json(input_json)
-        session.write(flowFile, lambda out: out.write(json.dumps(transformed_json).encode('utf-8')))
-        session.transfer(flowFile, REL_SUCCESS)
-    except Exception as e:
-        log.error("Error al transformar MCP: " + str(e))
-        session.transfer(flowFile, REL_FAILURE)
+    input_json = json.loads(json_attributes)
+    transformed_json = transform_json(input_json)
+    session.write(flowFile, lambda outputStream: outputStream.write(json.dumps(transformed_json).encode('utf-8')))
+    session.transfer(flowFile, REL_SUCCESS)
