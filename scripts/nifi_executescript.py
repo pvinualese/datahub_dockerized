@@ -3,6 +3,7 @@ from org.apache.nifi.processor.io import StreamCallback
 from java.io import InputStream, OutputStream
 import time
 
+
 def transform_json(input_json):
     # Get 'keywords' as a string
     keywords_str = input_json.get("keywords", "[]")
@@ -76,7 +77,25 @@ def transform_json(input_json):
                     "time": current_time_ms
                 }
             }
+        },
+        {
+            "entityType": "dataset",
+            "entityUrn": urn,
+            "aspect": {
+                "__type": "Domains",
+                "domains": ["urn:li:domain:meteorologia"]
+            }
         }
     ]
 
     return transformed
+
+
+# Get the current flowFile and session
+flowFile = session.get()
+if flowFile is not None:
+    json_attributes = flowFile.getAttribute("JSONAttributes")
+    input_json = json.loads(json_attributes)
+    transformed_json = transform_json(input_json)
+    session.write(flowFile, lambda outputStream: outputStream.write(json.dumps(transformed_json).encode('utf-8')))
+    session.transfer(flowFile, REL_SUCCESS)
