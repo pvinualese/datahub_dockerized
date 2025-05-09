@@ -59,7 +59,8 @@ services:
     command: >
       bash -c "pip install -U acryl-datahub[datahub-rest] && 
       python3 /datahub/scripts/create_domain_prec.py &&
-      python3 /datahub/scripts/create_terms_prec.py"  
+      python3 /datahub/scripts/create_terms_prec.py &&
+      python3 /datahub/scripts/create_tags_prec.py"  
     restart: on-failure
     networks:
       - datahub_network

@@ -99,6 +99,19 @@ def transform_json(input_json):
                     "actor": "urn:li:corpGroup:AEMET"
                 }
             }
+        },
+        {
+            "entityType": "dataset",
+            "entityUrn": urn,
+            "aspect": {
+                "__type": "GlobalTags",
+                "tags": [
+                    {
+                        "tag": "urn:li:tag:precipitations",
+                        "context": "Dataset contains precipitation data"
+                    }
+                ]
+            }
         }      
     ]
 
