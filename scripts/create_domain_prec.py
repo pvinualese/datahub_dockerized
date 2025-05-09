@@ -5,8 +5,8 @@ from datahub.emitter.mcp import MetadataChangeProposalWrapper
 from datahub.emitter.rest_emitter import DatahubRestEmitter
 from datahub.metadata.schema_classes import ChangeTypeClass, DomainPropertiesClass
 
-# log = logging.getLogger(__name__)
-# logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.WARN)
 
 domain_urn = make_domain_urn("meteorologia")
 domain_properties_aspect = DomainPropertiesClass(

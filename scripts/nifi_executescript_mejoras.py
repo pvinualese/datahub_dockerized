@@ -85,7 +85,21 @@ def transform_json(input_json):
                 "__type": "Domains",
                 "domains": ["urn:li:domain:meteorologia"]
             }
-        }
+        },
+        {
+            "entityType": "dataset",
+            "entityUrn": urn,
+            "aspect": {
+                "__type": "GlossaryTerms",
+                "terms": [
+                    {"urn": "urn:li:glossaryTerm:precipitations"}
+                ],
+                "auditStamp": {
+                    "time": current_time_ms,
+                    "actor": "urn:li:corpGroup:AEMET"
+                }
+            }
+        }      
     ]
 
     return transformed
