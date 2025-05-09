@@ -15,7 +15,7 @@ source:
       username: "datahub"
       password: "datahub"
     stateful_ingestion:
-      enabled: true
+      enabled: false
       ignore_old_state: true
     urn_pattern:
       allow:

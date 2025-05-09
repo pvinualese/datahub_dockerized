@@ -2,7 +2,7 @@
 pipeline_name: datahub_source_prec
 datahub_api:
   server: "http://datahub-gms-prec:8080"  # URL de la instancia de origen
-  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjMwZmU3NmFkLWY3ZmEtNDU5Ni05Mjc4LWM2NDU2NWNlYTIwYyIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkxMjA0MjksImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.lLjC-TdBN45U4lwb7NAwPjEBlRq6aGrx79i76UGM53g" #lo podemos coger de NIfi o crear otro en datahub
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjhjZWJkYTM2LTMxNGMtNDNiYS05NGVlLTBjOWEzNDExN2VjZCIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkzNzEwMTEsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.nPneNO8fZiPx_lfX4tpOKfviR1L4qEpiQWeDBxi_NEU"
 
 source:
   type: "datahub"
@@ -15,7 +15,7 @@ source:
       username: "datahub"
       password: "datahub"
     stateful_ingestion:
-      enabled: true
+      enabled: false
       ignore_old_state: true
     urn_pattern:
       allow:
