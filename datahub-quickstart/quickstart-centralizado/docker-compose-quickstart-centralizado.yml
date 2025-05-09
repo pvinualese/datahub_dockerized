@@ -140,7 +140,7 @@ services:
   datahub-upgrade-centralizado:
     build:
         context: ../../
-        dockerfile: docker/datahub-upgrade/Dockerfile
+        dockerfile: datahub-quickstart/datahub-upgrade/Dockerfile
     command:
     - -u
     - SystemUpdate

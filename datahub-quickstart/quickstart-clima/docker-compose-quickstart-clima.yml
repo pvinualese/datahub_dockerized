@@ -55,7 +55,12 @@ services:
       - ../../scripts:/datahub/scripts
     # command: >
     #   bash -c "pip install -U acryl-datahub[datahub-rest] && 
-    #            python3 /datahub/scripts/clima_to_datahub_container.py" 
+    #            python3 /datahub/scripts/clima_to_datahub_container.py"
+    command: >
+      bash -c "pip install -U acryl-datahub[datahub-rest] && 
+      python3 /datahub/scripts/create_domain_clima.py &&
+      python3 /datahub/scripts/create_terms_clima.py &&
+      python3 /datahub/scripts/create_tags_clima.py"  
     restart: on-failure
     networks:
       - datahub_network
@@ -135,7 +140,7 @@ services:
   datahub-upgrade-clima:
     build:
         context: ../../
-        dockerfile: docker/datahub-upgrade/Dockerfile
+        dockerfile: datahub-quickstart/datahub-upgrade/Dockerfile
     command:
     - -u
     - SystemUpdate
