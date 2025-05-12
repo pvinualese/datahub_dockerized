@@ -1,8 +1,8 @@
 # config.yaml
-pipeline_name: datahub_source_clima
+pipeline_name: datahub_source_clima_automatica
 datahub_api:
   server: "http://datahub-gms-clima:8080"  # URL de la instancia de origen
-  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjFmNjU5NmNjLWI2MWEtNDdkYy05ZmE5LTQ4YWZiZDU5MjI0MCIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkxMjc4NDcsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.oHD9FBc5ZwJUlRzt49CYukqV-EN7l3Yn4cjs6MRsgQM"
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImJmODFjMzUxLWIwMjgtNDI2NS1iNTcxLWQxOTUwODc4ZjQzYyIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkzNzk3NDcsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.4apgNb8KXD0mT1HE2ZcYaEwpeHpUZ6-0fcWz7SvN-rI"
 
 source:
   type: "datahub"
@@ -14,6 +14,13 @@ source:
       database: "datahub"
       username: "datahub"
       password: "datahub"
+    kafka_connection:
+      bootstrap: "broker-clima:29092"
+      schema_registry_url: "http://schema-registry-clima:8081"
+      consumer_config:
+        bootstrap.servers: "broker-clima:29092"
+        group.id: "datahub-source-clima"
+        auto.offset.reset: "earliest"
     stateful_ingestion:
       enabled: false
       ignore_old_state: true

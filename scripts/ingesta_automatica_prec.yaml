@@ -1,0 +1,37 @@
+# config.yaml
+pipeline_name: datahub_source_prec_automatica
+datahub_api:
+  server: "http://datahub-gms-prec:8080"  # URL de la instancia de origen
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImFkMDFjNjExLWY4N2QtNDhmYi05YTVhLTZlY2Q0MDgyZWM3YiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDk2NDE2MjMsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.hdKOblbp5hm64CYNlvmqDKNdP0fjmrcJqHKUOv7CDPw"
+
+source:
+  type: "datahub"
+  # Configuración de la fuente, para el acceso a la base de datos y Kafka
+  config:
+    database_connection:
+      scheme: "mysql+pymysql"
+      host_port: "mysql-prec:3306"
+      database: "datahub"
+      username: "datahub"
+      password: "datahub"
+    kafka_connection:
+      bootstrap: "broker-prec:29092"
+      schema_registry_url: "http://schema-registry-prec:8081"
+      consumer_config:
+        bootstrap.servers: "broker-prec:29092"
+        group.id: "datahub-source-prec"
+        auto.offset.reset: "earliest"
+    stateful_ingestion:
+      enabled: false
+      ignore_old_state: true
+    urn_pattern:
+      allow:
+        - .*
+      deny:
+        - ^urn:li:dataJob.*
+
+sink:
+  # Configuración del destino para la ingesta
+  type: "datahub-rest"
+  config:
+    server: "http://datahub-gms-federado:8080"  # URL de la instancia de destino

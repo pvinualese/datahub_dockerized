@@ -53,11 +53,11 @@ services:
     image: ${DATAHUB_ACTIONS_IMAGE:-acryldata/datahub-actions}:${ACTIONS_VERSION:-head}
     volumes:
       - ../../scripts:/datahub/scripts
-    command: |
-      bash -c "pip install -U acryl-datahub[datahub-rest] && \
-      pip install pymysql && \
-      datahub ingest run --config /datahub/scripts/ingesta_clima.yaml && \
-      datahub ingest run --config /datahub/scripts/ingesta_prec.yaml"
+    # command: >
+    #   bash -c "pip install -U acryl-datahub[datahub-rest] && 
+    #   python3 /datahub/scripts/create_domain_cent.py &&
+    #   python3 /datahub/scripts/create_terms_cent.py &&
+    #   python3 /datahub/scripts/create_tags_cent.py"  
 
     # 
     #          &&  python3 /datahub/scripts/centralizado_to_datahub_container.py" 

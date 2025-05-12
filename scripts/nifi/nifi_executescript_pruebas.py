@@ -53,7 +53,8 @@ def transform_json(input_json):
                     "organization_type": input_json.get("organizationType", "Unknown Organization Type"),
                     "license": input_json.get("license", "Unknown License"),
                     "mimetype": input_json.get("mimetype", "Unknown MIME type"),
-                    "link": input_json.get("Link", "Unknown link")
+                    "link": input_json.get("Link", "Unknown link"),
+                    "odrl": json.dumps([{"a":"policy1"}, {"a":"policy1"}, {"a":"policy1"}])
                 }
             }
         },

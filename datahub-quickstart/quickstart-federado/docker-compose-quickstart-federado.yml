@@ -56,11 +56,17 @@ services:
     command: |
       bash -c "pip install -U acryl-datahub[datahub-rest] && \
       pip install pymysql && \
-      datahub ingest run --config /datahub/scripts/ingesta_clima.yaml && \
-      datahub ingest run --config /datahub/scripts/ingesta_prec.yaml"
-
-    # 
-    #          &&  python3 /datahub/scripts/federado_to_datahub_container.py" 
+      pip install grpcio && \
+      pip install networkx && \
+      pip install google && \
+      pip install google-api-python-client google-auth google-cloud && \
+      echo 'Starting manual ingests...' && \
+      datahub ingest run --config /datahub/scripts/ingesta_clima_manual.yaml && \
+      datahub ingest run --config /datahub/scripts/ingesta_prec_manual.yaml && \
+      echo 'Manual ingests completed. Starting Kafka ingests in parallel...' && \
+      (while true; do datahub ingest run --config /datahub/scripts/ingesta_automatica_clima.yaml; sleep 5; done & \
+      while true; do datahub ingest run --config /datahub/scripts/ingesta_automatica_prec.yaml; sleep 5; done & \
+      wait)"
     restart: on-failure
     networks:
       - datahub_network
