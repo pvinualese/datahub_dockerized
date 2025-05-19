@@ -92,6 +92,15 @@ services:
     - DATAHUB_TRACKING_TOPIC=DataHubUsageEvent_v1
     - ELASTIC_CLIENT_HOST=elasticsearch-federado
     - ELASTIC_CLIENT_PORT=9200
+    - AUTH_OIDC_ENABLED=true
+    - AUTH_OIDC_CLIENT_ID=datahub
+    - AUTH_OIDC_CLIENT_SECRET=8a665e67-fc6e-490f-a6e2-a96e88ab245d
+    - AUTH_OIDC_DISCOVERY_URI=http://192.168.64.14:8585/auth/realms/master/.well-known/openid-configuration
+    - AUTH_OIDC_BASE_URL=http://localhost:9004
+    - AUTH_SESSION_TTL_HOURS=1
+    - MAX_SESSION_TOKEN_AGE=1h
+    - AUTH_OIDC_USER_NAME_CLAIM=email
+    - AUTH_OIDC_USER_NAME_CLAIM_REGEX=^cons@cons\.com$$
     hostname: datahub-frontend-react-federado
     image: ${DATAHUB_FRONTEND_IMAGE:-acryldata/datahub-frontend-react}:${DATAHUB_VERSION:-head}
     ports:
