@@ -79,6 +79,17 @@ services:
     - DATAHUB_TRACKING_TOPIC=DataHubUsageEvent_v1
     - ELASTIC_CLIENT_HOST=elasticsearch-prec
     - ELASTIC_CLIENT_PORT=9200
+    - METADATA_SERVICE_AUTH_ENABLED=true
+    - AUTH_OIDC_ENABLED=true
+    - AUTH_OIDC_CLIENT_ID=datahub
+    - AUTH_OIDC_CLIENT_SECRET=8a665e67-fc6e-490f-a6e2-a96e88ab245d
+    - AUTH_OIDC_DISCOVERY_URI=http://192.168.64.14:8585/auth/realms/master/.well-known/openid-configuration
+    - AUTH_OIDC_BASE_URL=http://localhost:9002
+    - AUTH_SESSION_TTL_HOURS=1
+    - MAX_SESSION_TOKEN_AGE=1h
+    - AUTH_OIDC_USER_NAME_CLAIM=email
+    - AUTH_OIDC_USER_NAME_CLAIM_REGEX=^met@met\.com$$
+    - AUTH_NATIVE_ENABLED=true
     hostname: datahub-frontend-react-prec
     image: ${DATAHUB_FRONTEND_IMAGE:-acryldata/datahub-frontend-react}:${DATAHUB_VERSION:-head}
     ports:
@@ -115,7 +126,8 @@ services:
     - KAFKA_SCHEMAREGISTRY_URL=http://schema-registry-prec:8081
     - MAE_CONSUMER_ENABLED=true
     - MCE_CONSUMER_ENABLED=true
-    - METADATA_SERVICE_AUTH_ENABLED=${METADATA_SERVICE_AUTH_ENABLED:-true}
+    # - METADATA_SERVICE_AUTH_ENABLED=${METADATA_SERVICE_AUTH_ENABLED:-true}
+    - METADATA_SERVICE_AUTH_ENABLED=true
     - NEO4J_HOST=http://neo4j-prec:7474
     - NEO4J_PASSWORD=datahub
     - NEO4J_URI=bolt://neo4j
@@ -123,6 +135,14 @@ services:
     - PE_CONSUMER_ENABLED=true
     - THEME_V2_DEFAULT=true
     - UI_INGESTION_ENABLED=true
+    # estas de abajo para conceder permisos de admin de momento no hacen nada. seguir viendo como hacerlo. investigar sobre roles
+    - ROOT_USER_URNS=urn:li:corpuser:met@met.com
+    - BOOTSTRAP_SYSTEM_USER_EMAIL=met@met.com
+    - BOOTSTRAP_SYSTEM_USER_URN=urn:li:corpuser:met@met.com
+    - SYSTEM_ADMINS=urn:li:corpuser:met@met.com
+    - DATAHUB_ANALYTICS_ENABLED=true
+    - OIDC_USER_PROVISIONING_ENABLED=true
+    - BOOTSTRAP_SYSTEM_UPDATE_WAIT_FOR_SYSTEM_UPDATE=false
     healthcheck:
       interval: 1s
       retries: 3
