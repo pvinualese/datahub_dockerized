@@ -3,3 +3,5 @@ ckan_mce_transformed.json
 ckan_sample.json
 precipitaciones.json
 *.jar
+logs
+__pycache__
