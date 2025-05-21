@@ -90,6 +90,7 @@ services:
       retries: 5
     restart: always
 
+
   redis:
     image: redis:latest
     hostname: redis
@@ -109,6 +110,8 @@ services:
     command: webserver
     ports:
       - 58080:8080
+    networks:
+      - datahub_network
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:58080/health"]
       interval: 10s
@@ -124,6 +127,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
+    networks:
+      - datahub_network
     restart: always
 
   airflow-worker:
@@ -136,6 +141,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
+    networks:
+      - datahub_network
     restart: always
 
   airflow-init:
@@ -147,12 +154,16 @@ services:
       _AIRFLOW_WWW_USER_CREATE: 'true'
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+    networks:
+      - datahub_network
 
   flower:
     <<: *airflow-common
     command: celery flower
     ports:
       - 5555:5555
+    networks:
+      - datahub_network
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:5555/"]
       interval: 10s

@@ -61,6 +61,11 @@ services:
 
     # 
     #          &&  python3 /datahub/scripts/centralizado_to_datahub_container.py" 
+    command: >
+      bash -c "pip install -U acryl-datahub[datahub-rest] && 
+      python3 /datahub/scripts/create_domain_drugs.py &&
+      python3 /datahub/scripts/create_terms_drugs.py &&
+      python3 /datahub/scripts/create_tags_drugs.py"    
     restart: on-failure
     networks:
       - datahub_network
