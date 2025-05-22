@@ -20,12 +20,13 @@ def transform_json(input_json):
     transformed = [
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "datasetProperties",
             "aspect": {
                 "__type": "DatasetProperties",  # Aspecto del dataset
                 "name": input_json.get("packageName", "Unknown Name"),
                 "description": input_json.get("packageDescription", "No description available"),
-                "tags": tags,
                 "customProperties": {
                     "resource_rights": input_json.get("resourceRights", "Unknown Resource Rights"),
                     "spatial_uri": input_json.get("spatialURI", "Unknown Spatial URI"),
@@ -59,7 +60,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "ownership",
             "aspect": {
                 "__type": "Ownership",
                 "owners": [
@@ -80,7 +83,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "domains",
             "aspect": {
                 "__type": "Domains",
                 "domains": ["urn:li:domain:meteorologia"]
@@ -88,7 +93,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "glossaryTerms",
             "aspect": {
                 "__type": "GlossaryTerms",
                 "terms": [
@@ -102,7 +109,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "globalTags",
             "aspect": {
                 "__type": "GlobalTags",
                 "tags": [

@@ -71,8 +71,9 @@ services:
       bash -c "pip install -U acryl-datahub[datahub-rest] && \
       pip install pymysql && \
       echo 'Starting Kafka ingests in parallel...' && \
-      (while true; do datahub ingest run --config /datahub/scripts/ingesta_automatica_clima.yaml; sleep 5; done & \
-      while true; do datahub ingest run --config /datahub/scripts/ingesta_automatica_prec.yaml; sleep 5; done & \
+      (while true; do datahub ingest run --config /datahub/scripts/ingesta_automatica_clima.yaml; sleep 1800; done & \
+      while true; do datahub ingest run --config /datahub/scripts/ingesta_automatica_prec.yaml; sleep 1800; done & \
+      while true; do datahub ingest run --config /datahub/scripts/ingesta_automatica_drugs.yaml; sleep 1800; done & \
       wait)"
     restart: on-failure
     networks:

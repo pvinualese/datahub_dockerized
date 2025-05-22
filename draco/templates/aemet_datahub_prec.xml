@@ -2575,7 +2575,7 @@
                     </entry>
                     <entry>
                         <key>Authorization</key>
-                        <value>Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjhjZWJkYTM2LTMxNGMtNDNiYS05NGVlLTBjOWEzNDExN2VjZCIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkzNzEwMTEsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.nPneNO8fZiPx_lfX4tpOKfviR1L4qEpiQWeDBxi_NEU</value>
+                        <value>Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImJjNjZlODgxLWJjODQtNGUwMC05ZGU1LTMzOTE1MTIxZDNiYSIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NTA0OTI4MDcsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.yjqygacy-jnIrnW3Fm_927Q1WtQqhPUWLiMCSlZ-Cs4</value>
                     </entry>
                 </properties>
                 <runDurationMillis>0</runDurationMillis>
@@ -4332,12 +4332,13 @@ def transform_json(input_json):
     transformed = [
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "datasetProperties",
             "aspect": {
                 "__type": "DatasetProperties",  # Aspecto del dataset
                 "name": input_json.get("packageName", "Unknown Name"),
                 "description": input_json.get("packageDescription", "No description available"),
-                "tags": tags,
                 "customProperties": {
                     "resource_rights": input_json.get("resourceRights", "Unknown Resource Rights"),
                     "spatial_uri": input_json.get("spatialURI", "Unknown Spatial URI"),
@@ -4371,7 +4372,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "ownership",
             "aspect": {
                 "__type": "Ownership",
                 "owners": [
@@ -4392,7 +4395,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "domains",
             "aspect": {
                 "__type": "Domains",
                 "domains": ["urn:li:domain:meteorologia"]
@@ -4400,7 +4405,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "glossaryTerms",
             "aspect": {
                 "__type": "GlossaryTerms",
                 "terms": [
@@ -4414,7 +4421,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "globalTags",
             "aspect": {
                 "__type": "GlobalTags",
                 "tags": [
@@ -4949,5 +4958,5 @@ if flowFile is not None:
             <type>org.apache.nifi.processors.standard.LogAttribute</type>
         </processors>
     </snippet>
-    <timestamp>05/09/2025 09:23:45 UTC</timestamp>
+    <timestamp>05/22/2025 10:51:08 UTC</timestamp>
 </template>

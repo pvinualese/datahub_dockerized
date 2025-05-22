@@ -990,12 +990,13 @@ def transform_json(input_json):
     transformed = [
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "datasetProperties",
             "aspect": {
                 "__type": "DatasetProperties",  # Aspecto del dataset
                 "name": input_json.get("packageName", "Unknown Name"),
                 "description": input_json.get("packageDescription", "No description available"),
-                "tags": tags,
                 "customProperties": {
                     "resource_rights": input_json.get("resourceRights", "Unknown Resource Rights"),
                     "spatial_uri": input_json.get("spatialURI", "Unknown Spatial URI"),
@@ -1029,7 +1030,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "ownership",
             "aspect": {
                 "__type": "Ownership",
                 "owners": [
@@ -1050,7 +1053,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "domains",
             "aspect": {
                 "__type": "Domains",
                 "domains": ["urn:li:domain:meteorologia"]
@@ -1058,7 +1063,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "glossaryTerms",
             "aspect": {
                 "__type": "GlossaryTerms",
                 "terms": [
@@ -1072,7 +1079,9 @@ def transform_json(input_json):
         },
         {
             "entityType": "dataset",
+            "changeType": "UPSERT",
             "entityUrn": urn,
+            "aspectName": "globalTags",
             "aspect": {
                 "__type": "GlobalTags",
                 "tags": [
@@ -4771,7 +4780,7 @@ if flowFile is not None:
                     </entry>
                     <entry>
                         <key>Authorization</key>
-                        <value>Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjhkMzBhOTc4LWQ4NzUtNDI1Ni1iZDdhLWUwZDk4MDU5NDFjOCIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NDkzNzQzMDgsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.F581kE-o_xaqCFHDmCF5E5-guMBskJ_oDFPdPNu7aPA</value>
+                        <value>Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImNsaW1hQGNsaW1hLmNvbSIsInR5cGUiOiJQRVJTT05BTCIsInZlcnNpb24iOiIyIiwianRpIjoiYjU5MzVmODItMjA4NS00MzlmLTg0ZmMtNWRmYzRiYjhmNmQyIiwic3ViIjoiY2xpbWFAY2xpbWEuY29tIiwiZXhwIjoxNzUwNDk5MjM3LCJpc3MiOiJkYXRhaHViLW1ldGFkYXRhLXNlcnZpY2UifQ.a4f790I16kf1RR0Fw--2S0U64wl4Y_hl6ub0SSRvIUw</value>
                     </entry>
                 </properties>
                 <runDurationMillis>0</runDurationMillis>
@@ -5016,5 +5025,5 @@ if flowFile is not None:
             <type>org.apache.nifi.processors.standard.LogAttribute</type>
         </processors>
     </snippet>
-    <timestamp>05/09/2025 09:22:56 UTC</timestamp>
+    <timestamp>05/22/2025 10:55:56 UTC</timestamp>
 </template>

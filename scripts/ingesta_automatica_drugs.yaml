@@ -1,8 +1,8 @@
 # config.yaml
-pipeline_name: datahub_source_prec_automatica
+pipeline_name: datahub_source_drugs_automatica
 datahub_api:
-  server: "http://datahub-gms-prec:8080"  # URL de la instancia de origen
-  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6Im1ldEBtZXQuY29tIiwidHlwZSI6IlBFUlNPTkFMIiwidmVyc2lvbiI6IjIiLCJqdGkiOiI0ZjdhYTg3Yy0zMDQ5LTQzZGItOGI1Ni0yN2RhNzQwNjY5ZDkiLCJzdWIiOiJtZXRAbWV0LmNvbSIsImV4cCI6MTc1MDIzNDY5NCwiaXNzIjoiZGF0YWh1Yi1tZXRhZGF0YS1zZXJ2aWNlIn0.bXDOaSkl3rn_0tde_YUFOjHcVcEH_NP74UfSuANJHVc"
+  server: "http://datahub-gms-drugs:8080"  # URL de la instancia de origen
+  token: "eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6IjE1OGEzMDkzLTBmYzgtNGQ5Ny1iODljLWE5NmVkMzY1MmFkMiIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NTA0MjEyOTQsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.Tpo-NHMISQI38M30-KBzBrklC3y1xDvInBPhlS3XgfU"
 
 source:
   type: "datahub"
@@ -10,16 +10,16 @@ source:
   config:
     database_connection:
       scheme: "mysql+pymysql"
-      host_port: "mysql-prec:3306"
+      host_port: "mysql-drugs:3306"
       database: "datahub"
       username: "datahub"
       password: "datahub"
     kafka_connection:
-      bootstrap: "broker-prec:29092"
-      schema_registry_url: "http://schema-registry-prec:8081"
+      bootstrap: "broker-drugs:29092"
+      schema_registry_url: "http://schema-registry-drugs:8081"
       consumer_config:
-        bootstrap.servers: "broker-prec:29092"
-        group.id: "datahub-source-prec"
+        bootstrap.servers: "broker-drugs:29092"
+        group.id: "datahub-source-drugs"
         auto.offset.reset: "earliest"
     stateful_ingestion:
       enabled: false
