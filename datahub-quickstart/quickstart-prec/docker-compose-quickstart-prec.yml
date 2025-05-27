@@ -135,14 +135,7 @@ services:
     - PE_CONSUMER_ENABLED=true
     - THEME_V2_DEFAULT=true
     - UI_INGESTION_ENABLED=true
-    # estas de abajo para conceder permisos de admin de momento no hacen nada. seguir viendo como hacerlo. investigar sobre roles
-    - ROOT_USER_URNS=urn:li:corpuser:met@met.com
-    - BOOTSTRAP_SYSTEM_USER_EMAIL=met@met.com
-    - BOOTSTRAP_SYSTEM_USER_URN=urn:li:corpuser:met@met.com
-    - SYSTEM_ADMINS=urn:li:corpuser:met@met.com
-    - DATAHUB_ANALYTICS_ENABLED=true
-    - OIDC_USER_PROVISIONING_ENABLED=true
-    - BOOTSTRAP_SYSTEM_UPDATE_WAIT_FOR_SYSTEM_UPDATE=false
+    - BOOTSTRAP_POLICIES_FILE=file:///datahub/resources/policies.json
     healthcheck:
       interval: 1s
       retries: 3
@@ -155,6 +148,7 @@ services:
     - ${DATAHUB_MAPPED_GMS_PORT:-8080}:8080
     volumes:
     - ${HOME}/.datahub/plugins:/etc/datahub/plugins
+    - ../../metadata-service/policies.json:/datahub/resources/policies.json
     networks:
       - datahub_network
 
