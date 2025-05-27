@@ -137,6 +137,7 @@ services:
     - PE_CONSUMER_ENABLED=true
     - THEME_V2_DEFAULT=true
     - UI_INGESTION_ENABLED=true
+    - BOOTSTRAP_POLICIES_FILE=file:///datahub/resources/policies.json
     healthcheck:
       interval: 1s
       retries: 3
@@ -149,6 +150,7 @@ services:
     - ${DATAHUB_MAPPED_GMS_PORT:-8086}:8080
     volumes:
     - ${HOME}/.datahub/plugins:/etc/datahub/plugins
+    - ../../metadata-service/policies.json:/datahub/resources/policies.json
     networks:
       - datahub_network
   datahub-upgrade-drugs:
