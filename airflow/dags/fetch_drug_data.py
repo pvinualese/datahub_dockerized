@@ -39,7 +39,7 @@ def fetch_drug_data(medicamento: str):
     result['usage_url'] = "https://open.fda.gov/apis/drug/event/how-to-use-the-endpoint/"
     result['searchable_fields_url'] = "https://open.fda.gov/apis/drug/event/searchable-fields/"
     result['link'] = f"https://api.fda.gov/drug/event.json?search=patient.drug.medicinalproduct:{medicamento}"
-    result['policy'] = {"@context": "http://www.w3.org/ns/odrl.jsonld", "type": "Set", "permission": [{"target": f"{medicamento}_events", "action": "use"}]}
+    result['policy'] = [{"@context": "http://www.w3.org/ns/odrl.jsonld", "type": "Set", "permission": [{"target": f"{medicamento}_events", "action": "use"}]}]
 
     # Guardar resultado a archivo local (puedes cambiar esto)
     filename = f"{medicamento.lower().replace(' ', '_')}_events.json"

@@ -87,7 +87,7 @@ services:
     - AUTH_OIDC_ENABLED=true
     - AUTH_OIDC_CLIENT_ID=datahub
     - AUTH_OIDC_CLIENT_SECRET=8a665e67-fc6e-490f-a6e2-a96e88ab245d
-    - AUTH_OIDC_DISCOVERY_URI=http://192.168.64.14:8585/auth/realms/master/.well-known/openid-configuration
+    - AUTH_OIDC_DISCOVERY_URI=http://192.168.64.3:8585/auth/realms/master/.well-known/openid-configuration
     - AUTH_OIDC_BASE_URL=http://localhost:9005
     - AUTH_SESSION_TTL_HOURS=1
     - MAX_SESSION_TOKEN_AGE=1h

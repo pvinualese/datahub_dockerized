@@ -5,3 +5,4 @@ precipitaciones.json
 *.jar
 logs
 __pycache__
+target
