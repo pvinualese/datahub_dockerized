@@ -29,18 +29,22 @@ def build_aspect_from_json(input_json):
                 "name": title,
                 "description": f"Información de los eventos producidos por el medicamento {drug_name}",
                 "customProperties": {
-                    "disclaimer": input_json.get("disclaimer", ""),
-                    "terms": input_json.get("terms", ""),
+                    "access_url": input_json.get("access_url", ""),
+                    "access_rights": input_json.get("access_rights", ""),
+                    "creator": input_json.get("creator", ""),
+                    "geographical_coverage": input_json.get("geographical_coverage", ""),
+                    "keywords": input_json.get("keyword", ""),
+                    "landing_page": input_json.get("landing_page", ""),
+                    "modification_date": input_json.get("modification_date", ""),
+                    "provenance": input_json.get("provenance", ""),
                     "license": input_json.get("license", ""),
-                    "last_updated": input_json.get("last_updated", ""),
-                    "number_of_events": input_json.get("number_of_events", ""),
-                    "sender_organization": input_json.get("sender_organization", ""),
-                    "drug_authorization_number": input_json.get("drug_authorization_number", ""),
-                    "overview_url": input_json.get("overview_url", ""),
-                    "usage_url": input_json.get("usage_url", ""),
-                    "searchable_fields_url": input_json.get("searchable_fields_url", ""),
-                    "link": input_json.get("link", ""),
-                    "policy": str(input_json.get("policy", ""))
+                    "frequency": input_json.get("frequency", ""),
+                    "title": title,
+                    "identifier": urn,
+                    "publisher": input_json.get("publisher", ""),
+                    "description": f"Información de los eventos producidos por el medicamento {drug_name}"
+
+                    
                 }
             }
         },
@@ -116,7 +120,7 @@ def send_aspect_to_datahub(aspect_list: list):
     url = "http://datahub-gms-drugs:8080/openapi/entities/v1/"  
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRydWdzQGRydWdzLmNvbSIsInR5cGUiOiJQRVJTT05BTCIsInZlcnNpb24iOiIyIiwianRpIjoiNGEzOTExYTgtNWYxYS00OWE4LWI4MTEtMDU4ZDMyOTgwYjZiIiwic3ViIjoiZHJ1Z3NAZHJ1Z3MuY29tIiwiZXhwIjoxNzUxMDE0NDI1LCJpc3MiOiJkYXRhaHViLW1ldGFkYXRhLXNlcnZpY2UifQ.-S7uV_rCesUQ92bse8TzaaeZX_WFsAKc3kh3YsWcvxo'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRydWdzQGRydWdzLmNvbSIsInR5cGUiOiJQRVJTT05BTCIsInZlcnNpb24iOiIyIiwianRpIjoiNTYzNzkzMzEtZWIzMy00YzYwLThiYmMtNjRmYzdhYWY1ZGVhIiwic3ViIjoiZHJ1Z3NAZHJ1Z3MuY29tIiwiZXhwIjoxNzUyMjQxMDAxLCJpc3MiOiJkYXRhaHViLW1ldGFkYXRhLXNlcnZpY2UifQ.JvE0rRozSujgtnIxxyNt-nnOQab8hT5hf3JIsHCXKuc'
     }
 
     response = requests.post(url, headers=headers, json=aspect_list)

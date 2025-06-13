@@ -29,17 +29,29 @@ def fetch_drug_data(medicamento: str):
 
     result['disclaimer'] = meta.get('disclaimer')
     result['terms'] = meta.get('terms')
-    result['license'] = meta.get('license')
-    result['last_updated'] = meta.get('last_updated')
+    # result['license'] = meta.get('license')
+    
     result['number_of_events'] = meta.get('results', {}).get('total', 0)    
     result['sender_organization'] = event.get('sender', {}).get('senderorganization')
     result['drug_authorization_number'] = str(drugs[0].get('drugauthorizationnumb')) if drugs and drugs[0].get('drugauthorizationnumb') is not None else "Unknown"
-    
+    result['usage_url'] = "https://open.fda.gov/apis/drug/event/how-to-use-the-endpoint/"
     result['overview_url'] = "https://open.fda.gov/apis/drug/event/"
     result['usage_url'] = "https://open.fda.gov/apis/drug/event/how-to-use-the-endpoint/"
     result['searchable_fields_url'] = "https://open.fda.gov/apis/drug/event/searchable-fields/"
-    result['link'] = f"https://api.fda.gov/drug/event.json?search=patient.drug.medicinalproduct:{medicamento}"
     result['policy'] = [{"@context": "http://www.w3.org/ns/odrl.jsonld", "type": "Set", "permission": [{"target": f"{medicamento}_events", "action": "use"}]}]
+
+    # DCAT-AP
+    result['creator'] = f"US-FDA"
+    result['access_rights'] = f"public"
+    result['geographical_coverage'] = f"United States of America"
+    result['keyword'] = f"fármacos"
+    result['landing_page'] = f"https://138.4.7.113:9005"
+    result['modification_date'] = meta.get('last_updated')
+    result['provenance'] = f"OpenFDA API + airflow"
+    result['license'] = meta.get('license')
+    result['access_url'] = f"https://api.fda.gov/drug/event.json?search=patient.drug.medicinalproduct:{medicamento}"
+    result['frequency'] = f"3 months"
+    result['publisher'] = f"US-FDA"
 
     # Guardar resultado a archivo local (puedes cambiar esto)
     filename = f"{medicamento.lower().replace(' ', '_')}_events.json"
