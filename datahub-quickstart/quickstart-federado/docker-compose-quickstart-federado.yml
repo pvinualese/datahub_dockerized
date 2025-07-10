@@ -76,8 +76,9 @@ services:
       bash -c "pip install -U acryl-datahub[datahub-rest] && \
       pip install pymysql && \
       datahub ingest run --config /datahub/scripts/ingesta_drugs_manual.yaml && \
+      sleep 20 && \
       datahub ingest run --config /datahub/scripts/ingesta_prec_manual.yaml && \
-      datahub ingest run --config /datahub/scripts/ingesta_clima_manual.yaml"
+      sleep 20"
     restart: on-failure
     networks:
       - datahub_network

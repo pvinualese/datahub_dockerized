@@ -120,7 +120,7 @@ def send_aspect_to_datahub(aspect_list: list):
     url = "http://datahub-gms-drugs:8080/openapi/entities/v1/"  
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRydWdzQGRydWdzLmNvbSIsInR5cGUiOiJQRVJTT05BTCIsInZlcnNpb24iOiIyIiwianRpIjoiNTYzNzkzMzEtZWIzMy00YzYwLThiYmMtNjRmYzdhYWY1ZGVhIiwic3ViIjoiZHJ1Z3NAZHJ1Z3MuY29tIiwiZXhwIjoxNzUyMjQxMDAxLCJpc3MiOiJkYXRhaHViLW1ldGFkYXRhLXNlcnZpY2UifQ.JvE0rRozSujgtnIxxyNt-nnOQab8hT5hf3JIsHCXKuc'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY3RvclR5cGUiOiJVU0VSIiwiYWN0b3JJZCI6ImRhdGFodWIiLCJ0eXBlIjoiUEVSU09OQUwiLCJ2ZXJzaW9uIjoiMiIsImp0aSI6ImRlOTA4NDVmLThmNjktNGNjYi1iOTg3LTM5ODZiMjZlYTdlZSIsInN1YiI6ImRhdGFodWIiLCJleHAiOjE3NTMwMDg4NTQsImlzcyI6ImRhdGFodWItbWV0YWRhdGEtc2VydmljZSJ9.gXnbW6Uv6gI13pNrA55SlBAZS4hWk6-QO4zPyuEwmAU'
     }
 
     response = requests.post(url, headers=headers, json=aspect_list)
