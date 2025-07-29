@@ -6,4 +6,4 @@ precipitaciones.json
 logs
 __pycache__
 target
-.env
+*.env
